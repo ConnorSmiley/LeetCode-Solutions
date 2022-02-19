@@ -1,0 +1,11 @@
+#Time complexity On
+class Solution(object):
+    def invertTree(self, TreeNode):
+        if TreeNode:
+            right = TreeNode.right
+            left = TreeNode.left
+            TreeNode.left = right
+            TreeNode.right = left
+            self.invertTree(TreeNode.left)
+            self.invertTree(TreeNode.right)
+            return TreeNode
