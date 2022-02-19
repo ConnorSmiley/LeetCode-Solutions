@@ -1,0 +1,36 @@
+//Time complexity 0n
+var invertTree = function(root) {
+    const reverseNode = (node) => {
+        if (node === null) {
+            return;
+        }
+
+        let tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
+
+        reverseNode(node.left);
+        reverseNode(node.right);
+
+    }
+    reverseNode(root)
+    return root;
+};
+
+//Time complexity On(?)
+var invertTree = function (root) {
+    let array = [root];
+    while(array.length > 0) {
+        let node = array.pop();
+        if(node != null) {
+
+            let tmp = node.left;
+            node.left = node.right;
+            node.right = tmp;
+
+            array.push(node.left);
+            array.push(node.right);
+        }
+    }
+    return root;
+};
